@@ -1,11 +1,4 @@
-# Household Electricity Billing System
-# With Transparent Bill Calculation + Restart Loop
-
 while True:
-
-    # -----------------------------------
-    # Price Variables
-    # -----------------------------------
 
     rate_0_30 = 5
     rate_31_60 = 9
@@ -18,30 +11,17 @@ while True:
 
     fixed_0_30 = 80
     fixed_31_60 = 210
-
     fixed_61_90 = 400
     fixed_91_120 = 1000
     fixed_121_180 = 1500
     fixed_above_180 = 2100
-
-    # -----------------------------------
-    # Input Meter Readings
-    # -----------------------------------
 
     print("\n========== ELECTRICITY BILLING SYSTEM ==========\n")
 
     last_reading = float(input("Enter last meter reading    : "))
     current_reading = float(input("Enter current meter reading : "))
 
-    # -----------------------------------
-    # Calculate Units
-    # -----------------------------------
-
     units = current_reading - last_reading
-
-    # -----------------------------------
-    # Validation
-    # -----------------------------------
 
     if units < 0:
         print("\nError: Current reading cannot be smaller than last reading.")
@@ -54,10 +34,7 @@ while True:
         print("\n========== BILL BREAKDOWN ==========")
         print("Units Consumed:", units, "kWh\n")
 
-        # -----------------------------------
         # 0 - 60 kWh Category
-        # -----------------------------------
-
         if units <= 30:
 
             energy_charge = units * rate_0_30
@@ -76,10 +53,7 @@ while True:
             print(f"30 × Rs.{rate_0_30} = Rs.{first_30}")
             print(f"{units - 30} × Rs.{rate_31_60} = Rs.{next_units}")
 
-        # -----------------------------------
         # Above 60 kWh Category
-        # -----------------------------------
-
         else:
 
             first_60 = 60 * rate_0_60_above
@@ -138,10 +112,7 @@ while True:
                 print(f"60 × Rs.{rate_121_180} = Rs.{part3}")
                 print(f"{units - 180} × Rs.{rate_above_180} = Rs.{part4}")
 
-        # -----------------------------------
         # Final Bill
-        # -----------------------------------
-
         total_bill = energy_charge + fixed_charge
 
         print("\n----------------------------------")
@@ -150,10 +121,7 @@ while True:
         print("----------------------------------")
         print("Total Bill    : Rs.", total_bill)
 
-    # -----------------------------------
     # Restart Option
-    # -----------------------------------
-
     choice = input("\nPress ENTER to calculate another bill or type 'q' to quit: ")
 
     if choice.lower() == 'q':
